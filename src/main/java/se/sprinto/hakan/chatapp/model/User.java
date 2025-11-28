@@ -7,11 +7,13 @@ public class User {
     private int id;
     private String username;
     private String password;
-    private List<Message> messages = new ArrayList<>();
+    private List<Message> messages = new ArrayList<>(); //lista med användarens meddelanden
 
+    //tom konstruktor
     public User() {
     }
 
+    //konstruktor
     public User(int id, String username, String password) {
         this.id = id;
         this.username = username;
@@ -49,6 +51,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setID() {
     }
 }
 

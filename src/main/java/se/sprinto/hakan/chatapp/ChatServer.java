@@ -8,16 +8,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ChatServer {
 
-    private final int port;
+    private final int port; //port som är kopplad till server
     private final Set<ClientHandler> clients = ConcurrentHashMap.newKeySet();
 
+    //konstruktor
     public ChatServer(int port) {
         this.port = port;
     }
 
     public void start() {
-        System.out.println("Server startar på port " + port + "...");
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
+        System.out.println("Server startar på port " + port + "..."); //skriver ut att servern startar
+
+        try (ServerSocket serverSocket = new ServerSocket(port)) { //skapar en serversocket till porten
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 ClientHandler handler = new ClientHandler(clientSocket, this);

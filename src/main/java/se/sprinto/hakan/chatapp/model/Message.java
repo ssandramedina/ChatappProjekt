@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 
 public class Message {
     private int id;
-    //använder endast userId här, eftersom hela Usern inte behövs
     private int userId;
     private String text;
     private LocalDateTime timestamp;
 
+    //konstruktor
     public Message(int userId, String text, LocalDateTime timestamp) {
         this.userId = userId;
         this.text = text;
@@ -25,6 +25,10 @@ public class Message {
 
     public LocalDateTime getTimestamp() {
         return timestamp;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 

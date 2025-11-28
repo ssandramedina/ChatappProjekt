@@ -6,21 +6,23 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+//Chatclienten anstluter till servern
 public class ChatClient {
     public void start() {
         String host = "localhost";
         int port = 5555;
 
-        try (Socket socket = new Socket(host, port);
+        try (Socket socket = new Socket(host, port); //anslutning till servern
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader console = new BufferedReader(new InputStreamReader(System.in))) {
 
+            //Tråd som kör samtidigt som övriga koden.
             new Thread(() -> {
                 try {
                     String response;
-                    while ((response = in.readLine()) != null) {
-                        System.out.println(response);
+                    while ((response = in.readLine()) != null) { //lyssnar på servern
+                        System.out.println(response); //skriver ut meddelande
                     }
                 } catch (IOException ignored) {
                 }
